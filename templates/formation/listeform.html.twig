@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gestion des formations</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body class="p-3 mb-2 bg-success text-dark">
+    <div style='background-color: blue;'>
+    <h1>Listes des inscriptions en cours</h>
+    </div>
+    <table class="table table-bordered table-info">
+        <thead>
+            <tr>
+                <th scope="col">Département</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Date début</th>
+                <th scope="col">Nombre d'heures</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Statut</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% if (messageI) %}
+        {{ messageI }}
+    {% endif %}
+    {% for inscription in insc %}
+        <tr>
+         <th scope="row">{{ inscription.formation.departement }}</th>
+         <td>{{ inscription.employe.nom }}</td>
+         <td>{{ inscription.employe.prenom }}</td>
+         <td>{{ inscription.formation.dateDebut|date("d/m/Y")}}</br></td>
+         <td>{{ inscription.formation.nbreHeures }}</td>
+         <td>{{ inscription.formation.produit.libelle }}</td>
+         <td>{{ inscription.statut }}</td>
+         <td><a href="{{path('app_modifinsc',{'id':inscription.id})}}">Modifier Statut</a></td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <div style='background-color: blue;'>
+    <h1>Listes des inscriptions acceptées</h>
+    </div>
+    <table class="table table-bordered table-info">
+        <thead>
+            <tr>
+                <th scope="col">Département</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Date début</th>
+                <th scope="col">Nombre d'heures</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Statut</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% if (messageA) %}
+        {{ messageA }}
+    {% endif %}
+    {% for inscription in inscA %}
+        <tr>
+         <th scope="row">{{ inscription.formation.departement }}</th>
+         <td>{{ inscription.employe.nom }}</td>
+         <td>{{ inscription.employe.prenom }}</td>
+         <td>{{ inscription.formation.dateDebut|date("d/m/Y")}}</br></td>
+         <td>{{ inscription.formation.nbreHeures }}</td>
+         <td>{{ inscription.formation.produit.libelle }}</td>
+         <td>{{ inscription.statut }}</td>
+         <td><a href="{{path('app_modifinsc',{'id':inscription.id})}}">Modifier Statut</a></td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <div style='background-color: blue;'>
+    <h1>Listes des formations</h>
+    </div>
+    <table class="table table-bordered table-info">
+        <thead>
+            <tr>
+                <th scope="col">Département</th>
+                <th scope="col">Date début</th>
+                <th scope="col">Nombre d'heures</th>
+                <th scope="col">Produit</th>
+                <th scope="col">#</th>
+                <th scope="col">#</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% if (message) %}
+        {{ message }}
+    {% endif %}
+    {% for formation in lesForms %}
+        <tr>
+         <th scope="row">{{ formation.departement }}</th>
+         <td>{{ formation.dateDebut|date("d/m/Y")}}</td>
+         <td>{{ formation.nbreHeures }}</td>
+         <td>{{ formation.produit.libelle }}</br></td>
+         <td><a href="{{path('app_listeinscrits',{'id': formation.id})}}">Liste des inscrits</a></br></td>
+         <td><a href="{{path('app_modifforma2',{'id': formation.id})}}">Modifier</a></br></td>
+         <td><a href="{{path('app_suppform',{'id': formation.id})}}">Suppression</a></br></td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <p>
+    <a href="{{path('app_ajoutform')}}">Ajouter Formation</a>
+    <p>
+    </body>
+</html>

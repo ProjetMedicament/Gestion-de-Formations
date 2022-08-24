@@ -1,0 +1,6 @@
+Vous êtes dans la liste des films du studio : {{ unStudio.nom }} </br>
+{% for film in unStudio.films %}
+    Titre du film : <b>{{ film.titre }} </b>
+    Date de sortie : {{ film.dateSortie|date("m/d/Y")}}
+    Resumé : {{ film.resume }}<br/>
+{% endfor %}

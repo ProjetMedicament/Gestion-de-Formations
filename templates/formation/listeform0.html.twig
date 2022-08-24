@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<div style='background-color: blue;'>
+    <head>
+        <title>Gestion des formations</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body class="p-3 mb-2 bg-success text-dark">
+    <h1>Listes des formations</h>
+    </div>
+    <table class="table table-bordered table-info">
+        <thead>
+            <tr>
+                <th scope="col">Département</th>
+                <th scope="col">Date début</th>
+                <th scope="col">Nombre d'heures</th>
+                <th scope="col">Produit</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% if (message) %}
+        {{ message }}
+    {% endif %}
+    {% for formation in lesForms %}
+        <tr>
+         <th scope="row">{{ formation.departement }}</th>
+         <td>{{ formation.dateDebut|date("d/m/Y")}}</td>
+         <td>{{ formation.nbreHeures }}</td>
+         <td>{{ formation.produit.libelle }}</br></td>
+         <td><a href="{{path('app_insc_form',{'id': formation.id,'login' : employe.login})}}">S'inscrire</a></br></td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <p>
+    </body>
+</html>

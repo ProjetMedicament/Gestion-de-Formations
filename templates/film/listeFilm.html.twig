@@ -1,0 +1,11 @@
+Vous êtes dans la liste des films : </br>
+{% if (message) %}
+    {{ message }}
+{% endif %}
+{% for film in ensFilms %}
+    <b>{{ film.titre }} </b>
+    Date de sortie : {{ film.dateSortie|date("m/d/Y")}}
+    Resumé : {{ film.resume }}<br/>
+    <a href="{{path('app_film_sup',{'id': film.id})}}">Suppression</a></br>
+    <a href="{{path('app_film_listeacteur',{'id': film.id})}}">Liste des Acteurs</a></br>
+{% endfor %}

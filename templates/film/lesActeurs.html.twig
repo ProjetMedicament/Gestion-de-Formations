@@ -1,0 +1,6 @@
+Liste des acteurs du film  : {{ unFilm.titre }} </br>
+{% for acteur in unFilm.acteurs %}
+    Nom Acteur: <b>{{ acteur.nom }} </b><br>
+    Prenom Acteur : {{ acteur.prenom}}<br>
+    ----<br>
+{% endfor %}

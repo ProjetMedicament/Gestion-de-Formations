@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<div style='background-color: blue;'>
+    <head>
+        <title>Gestion des formations</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body class="p-3 mb-2 bg-success text-dark">
+    <img src="{{ asset('logo.png') }}" alt="Logo"/>
+    <h1>Listes des formations de {{user.nom}} {{user.prenom}}</h>
+    </div>
+    <table class="table table-bordered table-info">
+        <thead>
+            <tr>
+                <th scope="col">Département</th>
+                <th scope="col">Date début</th>
+                <th scope="col">Nombre d'heures</th>
+                <th scope="col">Produit</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% if (message) %}
+        {{ message }}
+    {% endif %}
+    {% for inscription in lesInsc %}
+        <tr>
+         <th scope="row">{{ inscription.formation.departement }}</th>
+         <td>{{ inscription.formation.dateDebut|date("d/m/Y")}}</td>
+         <td>{{ inscription.formation.nbreHeures }}</td>
+         <td>{{ inscription.formation.produit.libelle }}</br></td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <p>
+    </body>
+</html>
