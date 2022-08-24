@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 24 mars 2022 à 13:16
+-- Généré le : mer. 24 août 2022 à 11:00
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -50,15 +50,16 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `prenom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `statut` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `employe`
 --
 
 INSERT INTO `employe` (`id`, `login`, `mdp`, `nom`, `prenom`, `statut`) VALUES
-(1, 'martin', '53836dad67d60a96d34d773f35a09218', 'Dupond', 'Martin', 1),
-(2, 'gerard', '5c403516fedb4dc563f9793e4b5d406f', 'Durand', 'Gérard', 0);
+(1, 'martin', '2f7d7b2bfa5fcf0093613eeca35e998a', 'Dupond', 'Martin', 0),
+(2, 'gerard', '8d7291fd96a1165f38d6c7ea4a84868b', 'Durand', 'Gérard', 0),
+(4, 'Fernand', 'cbae0d9b57891c1a328fa4669a84fc2a', 'Fernand', 'Sanchez', 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `description` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_404021BFF347EFB` (`produit_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `formation`
@@ -88,8 +89,10 @@ INSERT INTO `formation` (`id`, `date_debut`, `nbre_heures`, `departement`, `prod
 (3, '2021-02-05', 7, 'Loiret', 3, 0, 'Utilisation d\'un pc portable'),
 (4, '2021-05-07', 10, 'Grand Est', 2, 0, 'Utilisation d\'un PC de bureau'),
 (5, '2021-05-07', 10, 'Belfort', 5, 0, 'Les fonctions de l\'imprimante 3D'),
-(6, '2022-09-10', 2, 'Ile-de-France', 1, 0, 'Installation de votre tablette'),
-(10, '2022-01-09', 12, 'Alpes', 4, 3, 'Utilisation de l\'imprimante');
+(6, '2023-09-30', 2, 'Ile-de-France', 1, 0, 'Installation de votre tablette'),
+(10, '2022-03-31', 12, 'Alpes', 4, 3, 'Utilisation de l\'imprimante'),
+(11, '2022-04-05', 3, 'La Rochelle', 3, 2, 'Installation d\'un pare-feu'),
+(12, '2022-05-06', 2, 'Lyon', 4, 2, 'Utilisation de l\'imprimante');
 
 -- --------------------------------------------------------
 
@@ -107,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `inscription` (
   PRIMARY KEY (`id`),
   KEY `IDX_5E90F6D65200282E` (`formation_id`),
   KEY `IDX_5E90F6D61B65292` (`employe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `inscription`
@@ -115,7 +118,22 @@ CREATE TABLE IF NOT EXISTS `inscription` (
 
 INSERT INTO `inscription` (`employe_id`, `statut`, `formation_id`, `id`, `commentaire`) VALUES
 (2, 'En cours', 6, 28, NULL),
-(2, 'En cours', 1, 29, NULL);
+(2, 'Refusé', 1, 29, NULL),
+(4, 'En cours', 1, 31, NULL),
+(1, 'Refusé', 10, 32, 'Ne correspond pas au profil'),
+(1, 'En cours', 6, 33, NULL),
+(1, 'Refusé', 11, 34, 'Ne correspond pas au profil'),
+(2, 'En cours', 1, 35, NULL),
+(2, 'En cours', 1, 36, NULL),
+(2, 'En cours', 1, 37, NULL),
+(2, 'En cours', 3, 38, NULL),
+(2, 'En cours', 4, 39, NULL),
+(2, 'En cours', 5, 40, NULL),
+(2, 'En cours', 6, 41, NULL),
+(2, 'En cours', 6, 42, NULL),
+(2, 'En cours', 10, 43, NULL),
+(2, 'En cours', 11, 44, NULL),
+(2, 'En cours', 12, 45, NULL);
 
 -- --------------------------------------------------------
 
